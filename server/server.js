@@ -12,10 +12,11 @@ app.use(express.static('public'))
 
 const {
    getYoutubersData,
+   getPodcastData,
 } = require('./controller')
 
 app.get('/youtubers', getYoutubersData)
-// app.get('podcasts', getPodcastData)
+app.get('/podcasts', getPodcastData)
 // app.get('voices/influencers', getIndviduals)
 
 app.get('/', (req,res)=> {

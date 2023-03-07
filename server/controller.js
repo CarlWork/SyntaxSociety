@@ -17,8 +17,27 @@ const youtubersData = [
     },
   ]
 
+const podcastData = [
+    {
+    title: "CodeNewbie",
+    latestVideoTitle: "S19:E2 - How to Learn Swift and get into iOS Development",
+    latestVideoLink: "https://open.spotify.com/episode/3pbRZsAsBYqZ0v6aA7CYMl?si=ryD0PPAxQvCnXhc1zZ4Nvw",
+    latestVideoThumbnail: "https://i.scdn.co/image/ab6765630000ba8ad378fff418f60055bd6634e8",
+    description: "In this episode we talk about Swift and iOS development with Marc Aupont, senior IOS engineer at Nike. Marc talks about transitioning from a career in IT to iOS development, why he prefers iOS development over web development, and how you can start to code in the iOS language Swift without needing to buy expensive Apple products, which can be a huge barrier to entry for many communities."
+    }
+]
+
+
+
+
+
+
   module.exports = {
     getYoutubersData: (req, res) => {
         res.status(200).send(youtubersData)
+    },
+    getPodcastData: (req,res) => {
+        res.status(200).send(podcastData)
     }
+    
   }

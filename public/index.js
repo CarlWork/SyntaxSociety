@@ -1,36 +1,30 @@
 
 
 
-const youtubersData = [
-    {
-      title: "Sean Allen",
-      latestVideoTitle: "Expert Advice to Learn iOS Dev & Swift FAST",
-      latestVideoLink: "https://www.youtube.com/watch?v=uWEblkT0_Zk",
-      latestVideoThumbnail: "https://i.ytimg.com/an_webp/uWEblkT0_Zk/mqdefault_6s.webp?du=3000&sqp=CNysmaAG&rs=AOn4CLCAadg8TYtHiEal7-090PGbfLQPSA",
-      description: "Sean Allen is currently an iOS Developer freelancer, Youtuber, and influencer."
-    },
-    {
-      title: "Youtuber",
-      latestVideoTitle: "Latest Video",
-      latestVideoLink: "https://www.youtube.com/watch?v=video2",
-      latestVideoThumbnail: "https://via.placeholder.com/150x100",
-      description: "Description"
-    },
-  ]
-
-  
+const podcastLink = document.querySelector('#podcast-link')
   const youtuberLink = document.querySelector('#youtuber-link')
   const sectionContainer = document.querySelector('#section-container')
+
+    podcastLink.addEventListener('click', () => {
+        axios.get('/podcasts')
+        .then(response => {
+            const podcastHTML = generatePodcastHTML(response.data)
+            sectionContainer.innerHTML = podcastHTML
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    })
+
 
   youtuberLink.addEventListener('click', () => {
     axios.get('/youtubers')
       .then(response => {
         const youtuberHTML = generateYoutuberHTML(response.data)
         sectionContainer.innerHTML = youtuberHTML
-        console.log(youtuberHTML)
       })
       .catch(error => {
-        console.error(error)
+        console.log(error)
       })
   })
 
@@ -61,3 +55,30 @@ function generateYoutuberHTML(youtubers) {
     </section>
   `
 }
+
+function generatePodcastHTML(podcasts) {
+    const podcastHTML = podcasts.map((podcast) => {
+      return `
+        <div class="card">
+          <div class="card-header">
+            <h2>${podcast.title}</h2>
+          </div>
+          <div class="card-body">
+            <a href="${podcast.latestVideoLink}">
+              <img src="${podcast.latestVideoThumbnail}" alt="${podcasts.title}">
+            </a>
+            <p>${podcast.description}</p>
+            <a href="${podcast.latestVideoLink}">
+              ${podcast.latestVideoTitle}
+            </a>
+          </div>
+        </div>
+      `
+    }).join("")
+  
+    return `
+      <section class="Podcasts">
+        ${podcastHTML}
+      </section>
+    `
+  }
