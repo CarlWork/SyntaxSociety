@@ -16,7 +16,7 @@ const podcasts = [
   const contentCreators = [
     {
       creatorName: 'Paul Hudson',
-      image: 'https://i.ytimg.com/an_webp/HNXzcAwNqMc/mqdefault_6s.webp?du=3000&sqp=CK_voqAG&rs=AOn4CLAyGf9VQiGkOx_z_KyqTdo1iUKbgw',
+      image: 'https://i.ytimg.com/an_webp/qk2y-TiLDZo/mqdefault_6s.webp?du=3000&sqp=CLyVpKAG&rs=AOn4CLDnMU81NCo9_fseR8ZNEb_yf-Ms5A',
       bio: 'Paul Hudson creates Swift and iOS development videos on his YouTube channel.',
       linkedin: 'https://www.linkedin.com/in/paulhudson/',
       youtube: 'https://www.youtube.com/c/PaulHudson',
