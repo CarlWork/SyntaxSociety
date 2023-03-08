@@ -2,19 +2,19 @@
 
 
 const podcastLink = document.querySelector('#podcast-link')
-  const youtuberLink = document.querySelector('#youtuber-link')
-  const sectionContainer = document.querySelector('#section-container')
+const youtuberLink = document.querySelector('#youtuber-link')
+const sectionContainer = document.querySelector('#section-container')
 
-    podcastLink.addEventListener('click', () => {
-        axios.get('/podcasts')
-        .then(response => {
-            const podcastHTML = generatePodcastHTML(response.data)
-            sectionContainer.innerHTML = podcastHTML
-        })
-        .catch(error => {
-            console.log(error)
-        })
+podcastLink.addEventListener('click', () => {
+    axios.get('/podcasts')
+    .then(response => {
+        const podcastHTML = generatePodcastHTML(response.data)
+        sectionContainer.innerHTML = podcastHTML
     })
+    .catch(error => {
+        console.log(error)
+    })
+})
 
 
   youtuberLink.addEventListener('click', () => {
@@ -82,3 +82,4 @@ function generatePodcastHTML(podcasts) {
       </section>
     `
   }
+
