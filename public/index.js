@@ -17,46 +17,48 @@ podcastLink.addEventListener('click', () => {
 })
 
 
-  youtuberLink.addEventListener('click', () => {
+youtuberLink.addEventListener('click', () => {
     axios.get('/youtubers')
       .then(response => {
-        const youtuberHTML = generateYoutuberHTML(response.data)
-        sectionContainer.innerHTML = youtuberHTML
+        const contentCreators = response.data;
+        const contentCreatorsHTML = generateYoutuberHTML(contentCreators);
+        sectionContainer.innerHTML = contentCreatorsHTML;
       })
       .catch(error => {
         console.log(error)
       })
   })
-
-
-function generateYoutuberHTML(youtubers) {
-  const youtubersHTML = youtubers.map((youtuber) => {
+  
+  function generateYoutuberHTML(youtubers) {
+    const youtubersHTML = youtubers.map((youtuber) => {
+      return `
+        <div class="card">
+          <div class="card-header">
+            <h2>${youtuber.creatorName}</h2>
+          </div>
+          <div class="card-body">
+            <a href="${youtuber.youtube}">
+              <img src="${youtuber.image}" alt="${youtuber.creatorName}">
+            </a>
+            <p>${youtuber.bio}</p>
+            <div class="social-media-links">
+              <a id="linkedinLink" href="${youtuber.linkedin}"><i class="fab fa-linkedin"></i> ${youtuber.linkedinName}</a>
+              <a id="youtubeLink" href="${youtuber.youtube}"><i class="fab fa-youtube"></i> ${youtuber.youtubeName}</a>
+              <a id="twitterLink" href="${youtuber.twitter}"><i class="fab fa-twitter"></i> ${youtuber.twitterHandle}</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  
     return `
-      <div class="card">
-        <div class="card-header">
-          <h2>${youtuber.title}</h2>
-        </div>
-        <div class="card-body">
-          <a href="${youtuber.latestVideoLink}">
-            <img src="${youtuber.latestVideoThumbnail}" alt="${youtuber.title}">
-          </a>
-          <p>${youtuber.description}</p>
-          <a href="${youtuber.latestVideoLink}">
-            ${youtuber.latestVideoTitle}
-          </a>
-        </div>
-      </div>
-    `
-  }).join("")
-
-  return `
-    <section class="youtubers">
-      ${youtubersHTML}
-    </section>
-  `
-}
-
-function generatePodcastHTML(podcasts) {
+      <section class="youtubers">
+        ${youtubersHTML}
+      </section>
+    `;
+  }
+  
+  function generatePodcastHTML(podcasts) {
     const podcastHTML = podcasts.map((podcast) => {
       return `
         <div class="card">
@@ -65,7 +67,7 @@ function generatePodcastHTML(podcasts) {
           </div>
           <div class="card-body">
             <a href="${podcast.latestVideoLink}">
-              <img src="${podcast.latestVideoThumbnail}" alt="${podcasts.title}">
+              <img src="${podcast.latestVideoThumbnail}" alt="${podcast.title}">
             </a>
             <p>${podcast.description}</p>
             <a href="${podcast.latestVideoLink}">
@@ -82,4 +84,4 @@ function generatePodcastHTML(podcasts) {
       </section>
     `
   }
-
+  

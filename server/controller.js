@@ -1,43 +1,63 @@
-
-
-const youtubersData = [
+const podcasts = [
     {
-      title: "Sean Allen",
-      latestVideoTitle: "Expert Advice to Learn iOS Dev & Swift FAST",
-      latestVideoLink: "https://www.youtube.com/watch?v=uWEblkT0_Zk",
-      latestVideoThumbnail: "https://i.ytimg.com/an_webp/uWEblkT0_Zk/mqdefault_6s.webp?du=3000&sqp=CPKTnaAG&rs=AOn4CLB9XC-PAIX2wNA_C7lGiyODvr2HQA",
-      description: "Sean Allen is currently an iOS Developer freelancer, Youtuber, and influencer."
+      title: 'Swift by Sundell',
+      latestVideoLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      latestVideoThumbnail: 'https://via.placeholder.com/150',
+      description: 'Swift by Sundell is a podcast about Swift development and Apple platform development.'
     },
     {
-      title: "Youtuber",
-      latestVideoTitle: "Latest Video",
-      latestVideoLink: "https://www.youtube.com/watch?v=video2",
-      latestVideoThumbnail: "https://via.placeholder.com/150x100",
-      description: "Description"
-    },
-  ]
-
-const podcastData = [
-    {
-    title: "CodeNewbie",
-    latestVideoTitle: "S19:E2 - How to Learn Swift and get into iOS Development",
-    latestVideoLink: "https://open.spotify.com/episode/3pbRZsAsBYqZ0v6aA7CYMl?si=ryD0PPAxQvCnXhc1zZ4Nvw",
-    latestVideoThumbnail: "https://i.scdn.co/image/ab6765630000ba8ad378fff418f60055bd6634e8",
-    description: "In this episode we talk about Swift and iOS development with Marc Aupont, senior IOS engineer at Nike. Marc talks about transitioning from a career in IT to iOS development, why he prefers iOS development over web development, and how you can start to code in the iOS language Swift without needing to buy expensive Apple products, which can be a huge barrier to entry for many communities."
+      title: 'Under the Radar',
+      latestVideoLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      latestVideoThumbnail: 'https://via.placeholder.com/150',
+      description: 'Under the Radar is a podcast about independent iOS app development.'
     }
-]
+  ]
+  
+  const contentCreators = [
+    {
+      creatorName: 'Paul Hudson',
+      image: 'https://i.ytimg.com/an_webp/HNXzcAwNqMc/mqdefault_6s.webp?du=3000&sqp=CK_voqAG&rs=AOn4CLAyGf9VQiGkOx_z_KyqTdo1iUKbgw',
+      bio: 'Paul Hudson creates Swift and iOS development videos on his YouTube channel.',
+      linkedin: 'https://www.linkedin.com/in/paulhudson/',
+      youtube: 'https://www.youtube.com/c/PaulHudson',
+      twitter: 'https://twitter.com/twostraws',
+      linkedinName: 'paulhudson',
+      youtubeName: 'PaulHudson',
+      twitterHandle: '@twostraws'
+    },
+    {
+      creatorName: 'Sean Allen',
+      image: 'https://i.ytimg.com/an_webp/w7SNttwEmkU/mqdefault_6s.webp?du=3000&sqp=CIaSo6AG&rs=AOn4CLAZXufo2w1EHUR9Fa-u_butGB6Yvg',
+      bio: 'Sean Allen creates iOS development videos on his YouTube channel.',
+      linkedin: 'https://www.linkedin.com/in/seanallen-dev/',
+      youtube: 'https://www.youtube.com/c/SeanAllen',
+      twitter: 'https://twitter.com/seanallen_dev',
+      linkedinName: 'seanallen-dev',
+      youtubeName: 'SeanAllen',
+      twitterHandle: '@seanallen_dev'
+    },
+    {
+        creatorName: 'Dave Jacobsen',
+        image: 'https://i.ytimg.com/an_webp/KjeD3y7SevI/mqdefault_6s.webp?du=3000&sqp=COTao6AG&rs=AOn4CLADpvEwM8FMlaYTTeSBJWbpbSiKVw',
+        bio: 'Dave Jacobsen is a former Devmountain graduate that is a good source of advice for decisions on learning iOS development.',
+        linkedin: 'https://www.linkedin.com/in/davidjacobsen1/',
+        youtube: 'https://www.youtube.com/@DaveJacobseniOS/featured',
+        twitter: 'https://twitter.com/davejacobseniOS',
+        linkedinName: 'davidjacobsen1',
+        youtubeName:'Dave Jacobsen',
+        twitterHandle: '@DaveJacobseniOS'
+    }
 
-
-
-
+  ]
+  
 
 
   module.exports = {
     getYoutubersData: (req, res) => {
-        res.status(200).send(youtubersData)
+      res.status(200).send(contentCreators)
     },
-    getPodcastData: (req,res) => {
-        res.status(200).send(podcastData)
+    getPodcastData: (req, res) => {
+      res.status(200).send(podcasts)
     }
-    
   }
+  

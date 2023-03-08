@@ -1,6 +1,6 @@
-/* global styles */
+
 html {
-    font-size: 16px;
+    font-size: 140%;
   }
   
   body {
@@ -20,7 +20,7 @@ html {
     text-decoration: none;
   }
   
-  /* header styles */
+
   header {
     background-color: #1c1c1e;
     padding: 1rem;
@@ -53,7 +53,7 @@ html {
     text-align: center;
   }
   
-  /* main content styles */
+
   main {
     padding: 1rem;
   }
@@ -69,7 +69,7 @@ html {
     margin: 0 0 1rem;
   }
   
-  /* footer styles */
+
   footer {
     background-color: #2c2c2e;
     color: #fff;
@@ -98,6 +98,55 @@ html {
       color: #fff;
     }
   
-    /* add more dark mode styles here */
+
   }
   
+ 
+
+#youtubeLink {
+  color: red
+}
+
+
+#linkedinLink {
+  color: #0077b5;
+}
+
+/* Style the Twitter links */
+#twitterLink {
+  color: #1da1f2;
+}
+
+.social-media-links {
+  
+  margin-top: 20px;
+}
+
+.social-media-links a {
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
+
+.social-media-links a {
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  opacity: 0.33;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.social-media-links a:hover {
+  opacity: 1;
+}
+
+
+.card {
+  background-color: #2c2c2e;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 40px;
+  margin-bottom: 3%;
+}
+
