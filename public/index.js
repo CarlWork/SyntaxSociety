@@ -65,13 +65,9 @@ youtuberLink.addEventListener('click', () => {
             <h2>${podcast.title}</h2>
           </div>
           <div class="card-body">
-            <a href="${podcast.latestVideoLink}">
-              <img src="${podcast.latestVideoThumbnail}" alt="${podcast.title}">
+          <iframe style="border-radius:12px" src="${podcast.latestVideoThumbnail}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </a>
             <p>${podcast.description}</p>
-            <a href="${podcast.latestVideoLink}">
-              ${podcast.latestVideoTitle}
-            </a>
           </div>
         </div>
       `

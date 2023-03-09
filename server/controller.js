@@ -1,14 +1,12 @@
 const podcasts = [
     {
       title: 'Swift by Sundell',
-      latestVideoLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      latestVideoThumbnail: 'https://via.placeholder.com/150',
+      latestVideoThumbnail: 'https://open.spotify.com/embed/episode/0btUSb4VeVSRauj1KrxPLs?utm_source=generator',
       description: 'Swift by Sundell is a podcast about Swift development and Apple platform development.'
     },
     {
       title: 'Under the Radar',
-      latestVideoLink: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-      latestVideoThumbnail: 'https://via.placeholder.com/150',
+      latestVideoThumbnail: "https://open.spotify.com/embed/episode/4Yiz5mfJufBGPNqgvUtljh?utm_source=generator",
       description: 'Under the Radar is a podcast about independent iOS app development.'
     }
   ]
@@ -17,7 +15,7 @@ const podcasts = [
     {
       creatorName: 'Paul Hudson',
       video: 'https://www.youtube.com/embed/qk2y-TiLDZo',
-      bio: 'Paul Hudson is the founder of "100 Days of Swift" and is currently a Senior Solution Owner at Nokia',
+      bio: 'Paul Hudson is the founder of "100 Days of Swift" and is currently a Senior Solution Owner at Nokia.',
       linkedin: 'https://www.linkedin.com/in/paulhudson/',
       youtube: 'https://www.youtube.com/c/PaulHudson',
       twitter: 'https://twitter.com/twostraws',
@@ -28,7 +26,7 @@ const podcasts = [
     {
       creatorName: 'Sean Allen',
       video: 'https://www.youtube.com/embed/uWEblkT0_Zk',
-      bio: 'Sean is a former bootcamp graduate that started his youtube channel to share his journey of iOS development',
+      bio: 'Sean Allen is a former bootcamp graduate that started his youtube channel to share his journey of iOS development.',
       linkedin: 'https://www.linkedin.com/in/seanallen-dev/',
       youtube: 'https://www.youtube.com/c/SeanAllen',
       twitter: 'https://twitter.com/seanallen_dev',
