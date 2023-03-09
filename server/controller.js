@@ -16,8 +16,8 @@ const podcasts = [
   const contentCreators = [
     {
       creatorName: 'Paul Hudson',
-      image: 'https://i.ytimg.com/an_webp/qk2y-TiLDZo/mqdefault_6s.webp?du=3000&sqp=CLyVpKAG&rs=AOn4CLDnMU81NCo9_fseR8ZNEb_yf-Ms5A',
-      bio: 'Paul Hudson creates Swift and iOS development videos on his YouTube channel.',
+      video: 'https://www.youtube.com/embed/qk2y-TiLDZo',
+      bio: 'Paul Hudson is the founder of "100 Days of Swift" and is currently a Senior Solution Owner at Nokia',
       linkedin: 'https://www.linkedin.com/in/paulhudson/',
       youtube: 'https://www.youtube.com/c/PaulHudson',
       twitter: 'https://twitter.com/twostraws',
@@ -27,8 +27,8 @@ const podcasts = [
     },
     {
       creatorName: 'Sean Allen',
-      image: 'https://i.ytimg.com/an_webp/w7SNttwEmkU/mqdefault_6s.webp?du=3000&sqp=CIaSo6AG&rs=AOn4CLAZXufo2w1EHUR9Fa-u_butGB6Yvg',
-      bio: 'Sean Allen creates iOS development videos on his YouTube channel.',
+      video: 'https://www.youtube.com/embed/uWEblkT0_Zk',
+      bio: 'Sean is a former bootcamp graduate that started his youtube channel to share his journey of iOS development',
       linkedin: 'https://www.linkedin.com/in/seanallen-dev/',
       youtube: 'https://www.youtube.com/c/SeanAllen',
       twitter: 'https://twitter.com/seanallen_dev',
@@ -38,7 +38,7 @@ const podcasts = [
     },
     {
         creatorName: 'Dave Jacobsen',
-        image: 'https://i.ytimg.com/an_webp/KjeD3y7SevI/mqdefault_6s.webp?du=3000&sqp=COTao6AG&rs=AOn4CLADpvEwM8FMlaYTTeSBJWbpbSiKVw',
+        video: 'https://www.youtube.com/embed/xJHTyvlsgbM',
         bio: 'Dave Jacobsen is a former Devmountain graduate that is a good source of advice for decisions on learning iOS development.',
         linkedin: 'https://www.linkedin.com/in/davidjacobsen1/',
         youtube: 'https://www.youtube.com/@DaveJacobseniOS/featured',

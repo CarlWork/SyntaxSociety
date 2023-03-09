@@ -20,9 +20,9 @@ podcastLink.addEventListener('click', () => {
 youtuberLink.addEventListener('click', () => {
     axios.get('/youtubers')
       .then(response => {
-        const contentCreators = response.data;
-        const contentCreatorsHTML = generateYoutuberHTML(contentCreators);
-        sectionContainer.innerHTML = contentCreatorsHTML;
+        const contentCreators = response.data
+        const contentCreatorsHTML = generateYoutuberHTML(contentCreators)
+        sectionContainer.innerHTML = contentCreatorsHTML
       })
       .catch(error => {
         console.log(error)
@@ -37,8 +37,7 @@ youtuberLink.addEventListener('click', () => {
             <h2>${youtuber.creatorName}</h2>
           </div>
           <div class="card-body">
-            <a href="${youtuber.youtube}">
-              <img src="${youtuber.image}" alt="${youtuber.creatorName}">
+          <iframe width="560" height="315" src="${youtuber.video}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </a>
             <p>${youtuber.bio}</p>
             <div class="social-media-links">
@@ -48,14 +47,14 @@ youtuberLink.addEventListener('click', () => {
             </div>
           </div>
         </div>
-      `;
-    }).join("");
+      `
+    }).join("")
   
     return `
       <section class="youtubers">
         ${youtubersHTML}
       </section>
-    `;
+    `
   }
   
   function generatePodcastHTML(podcasts) {
