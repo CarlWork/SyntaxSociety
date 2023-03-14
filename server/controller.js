@@ -1,13 +1,20 @@
+
+
 const podcasts = [
     {
       title: 'Swift by Sundell',
-      latestVideoThumbnail: 'https://open.spotify.com/embed/episode/0btUSb4VeVSRauj1KrxPLs?utm_source=generator',
+      embeddedLink: 'https://open.spotify.com/embed/episode/0btUSb4VeVSRauj1KrxPLs?utm_source=generator',
       description: 'Swift by Sundell is a podcast about Swift development and Apple platform development.'
     },
     {
       title: 'Under the Radar',
-      latestVideoThumbnail: "https://open.spotify.com/embed/episode/4Yiz5mfJufBGPNqgvUtljh?utm_source=generator",
+      embeddedLink: "https://open.spotify.com/embed/episode/4Yiz5mfJufBGPNqgvUtljh?utm_source=generator",
       description: 'Under the Radar is a podcast about independent iOS app development.'
+    },
+    {
+        title: 'AppForce1',
+        embeddedLink: 'https://open.spotify.com/embed/episode/0Z1DXkbFffOlIkADFgRy37?utm_source=generator',
+        description: 'Jeroen Leenarts interviews peers, teachers, and other professionals related to iOS develpoment.'
     }
   ]
   
@@ -56,6 +63,18 @@ const podcasts = [
     },
     getPodcastData: (req, res) => {
       res.status(200).send(podcasts)
+    },
+    createCard: (req, res) => {
+      const { type, title, embeddedLink, description, creatorName, video, bio, linkedin, youtube, twitter, linkedinName, youtubeName, twitterHandle } = req.body
+    
+      if (type === 'podcast') {
+        podcasts.unshift({ title, embeddedLink, description })
+      } else if (type === 'youtuber') {
+        contentCreators.unshift({ creatorName, video, bio, linkedin, youtube, twitter, linkedinName, youtubeName, twitterHandle })
+      }
+    
+      res.status(201).send('Card created successfully')
     }
+    
   }
   

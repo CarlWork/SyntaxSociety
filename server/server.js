@@ -1,3 +1,5 @@
+
+
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
@@ -11,10 +13,12 @@ app.use(express.static('public'))
 const {
   getYoutubersData,
   getPodcastData,
+  createCard
 } = require('./controller')
 
 app.get('/youtubers', getYoutubersData)
 app.get('/podcasts', getPodcastData)
+app.post('/cards', createCard)
 
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../public/index.html'))
@@ -25,6 +29,7 @@ app.get('/css', (req, res) => {
 app.get('/js', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../public/index.js'))
 })
+
 
 app.listen(4000, () => {
   console.log('App Running on 4000')
