@@ -4,26 +4,25 @@
 const podcastLink = document.querySelector('#podcast-link')
 const youtuberLink = document.querySelector('#youtuber-link')
 const sectionContainer = document.querySelector('#section-container')
-
-// Get the add media link and section container
-const addMediaLink = document.getElementById('add-media-link');
-const container = document.querySelector('.section-container');
-// Add an event listener to the add media link
+const addMediaLink = document.getElementById('add-media-link')
+const container = document.querySelector('.section-container')
 addMediaLink.addEventListener('click', (event) => {
-  event.preventDefault();
-  // Create the HTML for the forms
+  event.preventDefault()
   const addPodcastFormHTML = `
+  <div class="form-card">
     <form id="add-podcast-form">
       <label for="podcast-title">Title:</label>
       <input type="text" id="podcast-title" name="podcastTitle"><br>
-      <label for="podcast-thumbnail">Latest Video Thumbnail:</label>
-      <input type="text" id="podcast-thumbnail" name="podcastThumbnail"><br>
+      <label for="podcast-thumbnail">Embedded Podcast Link:</label>
+      <input type="text" id="podcast-thumbnail" name="podcastLink"><br>
       <label for="podcast-description">Description:</label>
       <textarea id="podcast-description" name="podcastDescription"></textarea><br>
       <button type="submit">Add Podcast</button>
     </form>
-  `;
+  </div>
+  `
   const addContentCreatorFormHTML = `
+  <div class="form-card">
     <form id="add-content-creator-form">
       <label for="creator-name">Creator Name:</label>
       <input type="text" id="creator-name" name="creatorName"><br>
@@ -45,79 +44,85 @@ addMediaLink.addEventListener('click', (event) => {
       <input type="text" id="creator-twitter-handle" name="creatorTwitterHandle"><br>
       <button type="submit">Add Content Creator</button>
     </form>
-  `;
+  </div>
+  `
   // Replace the section container contents with the forms
-  sectionContainer.innerHTML = `${addPodcastFormHTML}${addContentCreatorFormHTML}`;
+  sectionContainer.innerHTML = `${addPodcastFormHTML}${addContentCreatorFormHTML}`
   // Add event listeners to the forms
-  const addPodcastForm = document.getElementById('add-podcast-form');
-  addPodcastForm.addEventListener('submit', handleAddPodcastFormSubmit);
-  const addContentCreatorForm = document.getElementById('add-content-creator-form');
-  addContentCreatorForm.addEventListener('submit', handleAddContentCreatorFormSubmit);
-});
-function handleAddPodcastFormSubmit(event) {
-  event.preventDefault();
+  const addPodcastForm = document.getElementById('add-podcast-form')
+  addPodcastForm.addEventListener('submit', handleAddPodcastFormSubmit)
+  const addContentCreatorForm = document.getElementById('add-content-creator-form')
+  addContentCreatorForm.addEventListener('submit', handleAddContentCreatorFormSubmit)
+})
 
-  // Get the form data
-  const formData = new FormData(event.target);
+function handleAddPodcastFormSubmit(event, podcasts) {
+  event.preventDefault()
 
   // Create a new podcast object with the form data
   const newPodcast = {
-    title: formData.get('podcastTitle'),
-    embeddedLink: formData.get('Link'),
-    description: formData.get('podcastDescription')
-  };
+    title: event.target.elements.podcastTitle.value,
+    embeddedLink: event.target.elements.podcastLink.value,
+    description: event.target.elements.podcastDescription.value
+  }
 
-  // Add the new podcast to the list
-  const podcastList = document.querySelector('.podcast-list');
-  const newPodcastItem = document.createElement('li');
-  newPodcastItem.innerHTML = `
-    <h2>${newPodcast.title}</h2>
-    <img src="${newPodcast.embeddedLink}" alt="Podcast Embed link">
-    <p>${newPodcast.description}</p>
-  `;
-  podcastList.appendChild(newPodcastItem);
+  newPodcast.embeddedLink = extractYoutubeSrc(newPodcast.embeddedLink)
 
-  // Clear the form
-  event.target.reset();
+  // Make a POST request to the server to add the new podcast
+  axios.post('/podcasts', newPodcast)
+    .then(response => {
+      // Generate HTML code for the updated list of podcasts
+      const updatedPodcastHTML = generatePodcastHTML(response.data)
+
+      // Replace the existing list of podcasts with the updated list
+      // const podcastList = document.querySelector('.Podcasts')
+      // podcastList.innerHTML = updatedPodcastHTML
+      sectionContainer.innerHTML = updatedPodcastHTML
+
+      event.target.reset()
+    })
+    .catch(error => {
+      console.error(error)
+    })
 }
 
-function handleAddContentCreatorFormSubmit(event) {
-  event.preventDefault();
 
-  // Get the form data
-  const formData = new FormData(event.target);
+  
+function handleAddContentCreatorFormSubmit(event) {
+  event.preventDefault()
 
   // Create a new content creator object with the form data
   const newContentCreator = {
-    name: formData.get('creatorName'),
-    video: formData.get('creatorVideo'),
-    bio: formData.get('creatorBio'),
-    linkedin: formData.get('creatorLinkedIn'),
-    youtube: formData.get('creatorYouTube'),
-    twitter: formData.get('creatorTwitter'),
-    linkedinName: formData.get('creatorLinkedInName'),
-    youtubeName: formData.get('creatorYouTubeName'),
-    twitterHandle: formData.get('creatorTwitterHandle')
-  };
+    creatorName: event.target.elements.creatorName.value,
+    video: event.target.elements.creatorVideo.value,
+    bio: event.target.elements.creatorBio.value,
+    linkedin: event.target.elements.creatorLinkedIn.value,
+    youtube: event.target.elements.creatorYouTube.value,
+    twitter: event.target.elements.creatorTwitter.value,
+    linkedinName: event.target.elements.creatorLinkedInName.value,
+    youtubeName: event.target.elements.creatorYouTubeName.value,
+    twitterHandle: event.target.elements.creatorTwitterHandle.value
+  }
 
-  // Add the new content creator to the list
-  const contentCreatorList = document.querySelector('.content-creator-list');
-  const newContentCreatorItem = document.createElement('li');
-  newContentCreatorItem.innerHTML = `
-    <h2>${newContentCreator.name}</h2>
-    <video src="${newContentCreator.video}" controls></video>
-    <p>${newContentCreator.bio}</p>
-    <ul>
-      <li><a href="${newContentCreator.linkedin}">${newContentCreator.linkedinName}</a></li>
-      <li><a href="${newContentCreator.youtube}">${newContentCreator.youtubeName}</a></li>
-      <li><a href="${newContentCreator.twitter}">@${newContentCreator.twitterHandle}</a></li>
-    </ul>
-  `;
-  contentCreatorList.appendChild(newContentCreatorItem);
+  newContentCreator.video = extractYoutubeSrc(newContentCreator.video)
 
-  // Clear the form
-  event.target.reset();
+  // Make a POST request to the server to add the new content creator
+  axios.post('/youtubers', newContentCreator)
+    .then(response => {
+      // Generate HTML code for the new content creator card
+      const newContentCreatorCardHTML = generateYoutuberHTML(response.data)
+      console.log(response.data)
+
+      // Add the new content creator card to the list
+      sectionContainer.innerHTML = newContentCreatorCardHTML
+
+      event.target.reset()
+    })
+    .catch(error => {
+      console.error(error)
+    })
 }
+
+  
 
 podcastLink.addEventListener('click', () => {
     axios.get('/podcasts')
@@ -146,6 +151,7 @@ youtuberLink.addEventListener('click', () => {
   function generateYoutuberHTML(youtubers) {
     const youtubersHTML = youtubers.map((youtuber) => {
       return `
+      <section id="content-creator-cards">
         <div class="card">
           <div class="card-header">
             <h2>${youtuber.creatorName}</h2>
@@ -161,37 +167,56 @@ youtuberLink.addEventListener('click', () => {
             </div>
           </div>
         </div>
+      </section>
       `
     }).join("")
-  
-    return `
-      <section class="youtubers">
-        ${youtubersHTML}
-      </section>
-    `
+   return youtubersHTML 
   }
   
   function generatePodcastHTML(podcasts) {
     const podcastHTML = podcasts.map((podcast) => {
       return `
+      <section id="podcast-cards">
         <div class="card">
           <div class="card-header">
             <h2>${podcast.title}</h2>
           </div>
           <div class="card-body">
-          <iframe style="border-radius:12px" src="${podcast.embeddedLink}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </a>
+            <iframe style="border-radius:12px" src="${podcast.embeddedLink}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             <p>${podcast.description}</p>
           </div>
         </div>
+      </section>
       `
     }).join("")
-  
-    return `
-      <section class="Podcasts">
-        ${podcastHTML}
-      </section>
-    `
+    return podcastHTML
+    // if (newPodcast) {
+    //   const newPodcastHTML = `
+    //   <section id="podcast-cards">
+    //     <div class="card">
+    //       <div class="card-header">
+    //         <h2>${newPodcast.title}</h2>
+    //       </div>
+    //       <div class="card-body">
+    //         <iframe style="border-radius:12px" src="${newPodcast.embeddedLink}" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    //         <p>${newPodcast.description}</p>
+    //       </div>
+    //     </div>
+    //   </section>
+    //   `
+    //   return `
+    //     <section class="Podcasts">
+    //       ${podcastHTML}
+    //       ${newPodcastHTML}
+    //     </section>
+    //   `
+    // } else {
+    //   return `
+    //     <section class="Podcasts">
+    //       ${podcastHTML}
+    //     </section>
+    //   `
+    // }
   }
   
 

@@ -13,12 +13,14 @@ app.use(express.static('public'))
 const {
   getYoutubersData,
   getPodcastData,
-  createCard
+  newPodcast,
+  newContentCreator
 } = require('./controller')
 
 app.get('/youtubers', getYoutubersData)
 app.get('/podcasts', getPodcastData)
-app.post('/cards', createCard)
+app.post('/podcasts', newPodcast)
+app.post('/youtubers', newContentCreator)
 
 app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../public/index.html'))

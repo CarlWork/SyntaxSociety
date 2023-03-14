@@ -14,7 +14,7 @@ const podcasts = [
     {
         title: 'AppForce1',
         embeddedLink: 'https://open.spotify.com/embed/episode/0Z1DXkbFffOlIkADFgRy37?utm_source=generator',
-        description: 'Jeroen Leenarts interviews peers, teachers, and other professionals related to iOS develpoment.'
+        description: 'Jeroen Leenarts interviews peers, teachers, and other professionals related to iOS development.'
     }
   ]
   
@@ -64,17 +64,16 @@ const podcasts = [
     getPodcastData: (req, res) => {
       res.status(200).send(podcasts)
     },
-    createCard: (req, res) => {
-      const { type, title, embeddedLink, description, creatorName, video, bio, linkedin, youtube, twitter, linkedinName, youtubeName, twitterHandle } = req.body
-    
-      if (type === 'podcast') {
-        podcasts.unshift({ title, embeddedLink, description })
-      } else if (type === 'youtuber') {
-        contentCreators.unshift({ creatorName, video, bio, linkedin, youtube, twitter, linkedinName, youtubeName, twitterHandle })
-      }
-    
-      res.status(201).send('Card created successfully')
+    newPodcast: (req, res) => {
+      const newPodcast = req.body
+      podcasts.push(newPodcast)
+      res.status(200).send(podcasts)
+    },
+    newContentCreator: (req, res) => {
+      const newContentCreator = req.body
+      contentCreators.push(newContentCreator)
+      res.status(200).send(contentCreators)
     }
-    
   }
+  
   
