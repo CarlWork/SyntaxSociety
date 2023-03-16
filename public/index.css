@@ -1,112 +1,116 @@
-
 html {
-    font-size: 140%;
-  }
-  
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #fff;
-    background-color: #1c1c1e;
-    margin: 0;
-    padding: 0;
-    line-height: 1.5;
-    text-align: center;
-  }
-  
-  a {
-    color: #007aff;
-    text-decoration: none;
-  }
-  
-
-  header {
-    background-color: #1c1c1e;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin: 0;
-    color: #fff;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    text-align: center;
-  }
-  
-  nav li {
-    margin-right: 1rem;
-    text-align: center;
-  }
-  
-  nav a {
-    display: block;
-    padding: 0.5rem 1rem;
-    text-align: center;
-  }
-  
-
-  main {
-    padding: 1rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0 0 1rem;
-    color: #fff;
-  }
-  
-  p {
-    margin: 0 0 1rem;
-  }
-  
-
-  footer {
-    background-color: #2c2c2e;
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-  }
-
-  #navbar {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* dark mode styles */
-  @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #000;
-      color: #fff;
-    }
-  
-    header {
-      background-color: #2c2c2e;
-    }
-  
-    nav a {
-      color: #fff;
-    }
-  
-
-  }
-  
- 
-
-#youtubeLink {
-  color: red
+  font-size: 140%;
 }
 
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #fff;
+  background-color: #1c1c1e;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  text-align: center;
+  transition: background-color 0.5s ease-in-out;
+}
+
+a {
+  color: #007aff;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+header {
+  background-color: #1c1c1e;
+  padding: 1rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  text-align: center;
+}
+
+nav li {
+  margin-right: 1rem;
+  text-align: center;
+}
+
+nav a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+main {
+  padding: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+footer {
+  background-color: #2c2c2e;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+#navbar {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #000;
+    color: #fff;
+  }
+
+  header {
+    background-color: #2c2c2e;
+  }
+
+  nav a {
+    color: #fff;
+  }
+}
+
+#youtubeLink {
+  color: red;
+}
 
 #linkedinLink {
   color: #0077b5;
@@ -118,7 +122,6 @@ html {
 }
 
 .social-media-links {
-  
   margin-top: 20px;
 }
 
@@ -141,14 +144,32 @@ html {
   opacity: 1;
 }
 
-
 .card {
   background-color: #2c2c2e;
-  max-width: 800px;
+  max-width: 1000px;
   max-height: fit-content;
   margin: auto;
   border-radius: 40px;
   margin-bottom: 3%;
+  padding: 30px;
+}
+
+/* Forms */
+
+.card {
+  background-color: #2c2c2e;
+  max-width: 1000px;
+  max-height: fit-content;
+  margin: auto;
+  border-radius: 40px;
+  margin-bottom: 3%;
+  padding: 30px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25); /* Add a box-shadow */
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02); /* Add a hover effect */
 }
 
 /* Forms */
@@ -157,10 +178,11 @@ html {
   background-color: #2c2c2e;
   max-width: 800px;
   margin: auto;
-  border-radius: 5px;
+  border-radius: 40px;
   padding: 1rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   margin-bottom: 5%;
+  position: relative;
 }
 
 .form-card label {
@@ -181,12 +203,19 @@ html {
   margin-top: 0.5rem;
   padding: 0.5rem;
   width: 80%;
+  transition: all 0.3s ease-in-out; 
+}
+
+.form-card input:focus,
+.form-card textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007aff; 
 }
 
 .form-card button[type="submit"] {
   background-color: #007aff;
   border: none;
-  border-radius: 5px;
+  border-radius: 40px;
   color: #fff;
   font-size: 1.2rem;
   font-weight: 600;
@@ -198,4 +227,37 @@ html {
 .form-card button[type="submit"]:hover {
   background-color: #0066cc;
   cursor: pointer;
+}
+
+/*tooltip*/
+
+.form-card:hover .tooltip {
+  display: block;
+  position: relative;
+}
+
+.tooltip {
+  display: none;
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  background-color: #2c2c2e;
+  color: white;
+  border: 1px solid white;
+  padding: 8px;
+  font-size: 12px;
+  transition: 1.5s;
+  z-index: 69;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0,
+0.25);
+text-align: center;
+}
+
+.tooltip.open {
+  display: block;
+  z-index: 69;
+  opacity: 1;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in;
 }

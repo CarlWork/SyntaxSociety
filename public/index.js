@@ -12,40 +12,40 @@ addMediaLink.addEventListener('click', (event) => {
   <div class="form-card">
     <form id="add-podcast-form">
       <label for="podcast-title">Title:</label>
-      <input type="text" id="podcast-title" name="podcastTitle"><br>
+      <input type="text" id="podcast-title" name="podcastTitle" class="form-input" data-tooltip="This is the name of the podcast show"><br>
       <label for="podcast-thumbnail">Embedded Podcast Link:</label>
-      <input type="text" id="podcast-thumbnail" name="podcastLink"><br>
+      <input type="text" id="podcast-thumbnail" name="podcastLink" class="form-input" data-tooltip="In Spotify, click on the three dots next your favorite podcast, select share, then copy the 'embed episode' link into this form."><br>
       <label for="podcast-description">Description:</label>
-      <textarea id="podcast-description" name="podcastDescription"></textarea><br>
+      <textarea id="podcast-description" name="podcastDescription" class="form-input" data-tooltip="Give a description of your favorite podcast show!"></textarea><br>
       <button type="submit">Add Podcast</button>
     </form>
   </div>
-  `
-  const addContentCreatorFormHTML = `
+`
+const addContentCreatorFormHTML = `
   <div class="form-card">
-    <form id="add-content-creator-form">
-      <label for="creator-name">Creator Name:</label>
-      <input type="text" id="creator-name" name="creatorName"><br>
-      <label for="creator-video">Video:</label>
-      <input type="text" id="creator-video" name="creatorVideo"><br>
-      <label for="creator-bio">Bio:</label>
-      <textarea id="creator-bio" name="creatorBio"></textarea><br>
-      <label for="creator-linkedin">LinkedIn:</label>
-      <input type="text" id="creator-linkedin" name="creatorLinkedIn"><br>
-      <label for="creator-youtube">YouTube:</label>
-      <input type="text" id="creator-youtube" name="creatorYouTube"><br>
-      <label for="creator-twitter">Twitter:</label>
-      <input type="text" id="creator-twitter" name="creatorTwitter"><br>
-      <label for="creator-linkedin-name">LinkedIn Name:</label>
-      <input type="text" id="creator-linkedin-name" name="creatorLinkedInName"><br>
-      <label for="creator-youtube-name">YouTube Name:</label>
-      <input type="text" id="creator-youtube-name" name="creatorYouTubeName"><br>
-      <label for="creator-twitter-handle">Twitter Handle:</label>
-      <input type="text" id="creator-twitter-handle" name="creatorTwitterHandle"><br>
-      <button type="submit">Add Content Creator</button>
-    </form>
-  </div>
-  `
+      <form id="add-content-creator-form">
+        <label for="creator-name">Creator Name:</label>
+        <input type="text" id="creator-name" name="creatorName" class="form-input" data-tooltip="This is the first and last name of your the content creator you want to add."><br>
+        <label for="creator-video">Embedded Video Link:</label>
+        <input type="text" id="creator-video" name="creatorVideo" class="form-input" data-tooltip="Select a video you want to share from YouTube, click the 'embed' option, and copy that link into this form."><br>
+        <label for="creator-bio">Bio:</label>
+        <textarea id="creator-bio" name="creatorBio" class="form-input" data-tooltip="Give a brief description of what this content creator is known for!"></textarea><br>
+        <label for="creator-linkedin">LinkedIn:</label>
+        <input type="text" id="creator-linkedin" name="creatorLinkedIn" class="form-input" data-tooltip="Enter the LinkedIn profile link"><br>
+        <label for="creator-linkedin-name">LinkedIn Name:</label>
+        <input type="text" id="creator-linkedin-name" name="creatorLinkedInName" class="form-input" data-tooltip="Enter their LinkedIn username"><br>
+        <label for="creator-youtube">YouTube:</label>
+        <input type="text" id="creator-youtube" name="creatorYouTube" class="form-input" data-tooltip="Enter the YouTube channel link"><br>
+        <label for="creator-youtube-name">YouTube Name:</label>
+        <input type="text" id="creator-youtube-name" name="creatorYouTubeName" class="form-input" data-tooltip="Enter the YouTube channel name"><br>
+        <label for="creator-twitter">Twitter:</label>
+        <input type="text" id="creator-twitter" name="creatorTwitter" class="form-input" data-tooltip="Enter the Twitter profile link"><br>
+        <label for="creator-twitter-handle">Twitter Handle:</label>
+        <input type="text" id="creator-twitter-handle" name="creatorTwitterHandle" class="form-input" data-tooltip="Enter their Twitter handle"><br>
+        <button type="submit">Add Content Creator</button>
+      </form>
+    </div>
+`
   // Replace the section container contents with the forms
   sectionContainer.innerHTML = `${addPodcastFormHTML}${addContentCreatorFormHTML}`
   // Add event listeners to the forms
@@ -53,7 +53,27 @@ addMediaLink.addEventListener('click', (event) => {
   addPodcastForm.addEventListener('submit', handleAddPodcastFormSubmit)
   const addContentCreatorForm = document.getElementById('add-content-creator-form')
   addContentCreatorForm.addEventListener('submit', handleAddContentCreatorFormSubmit)
+  
+  const formInputs = document.querySelectorAll('.form-input')
+  formInputs.forEach(input => {
+    input.addEventListener('mouseover', addToolTip)
+    input.addEventListener('mouseout', removeToolTip)
+  })
+
 })
+
+const addToolTip = evt => {
+  const tooltip = document.querySelector('.tooltip')
+  tooltip.classList.toggle('open')
+  tooltip.textContent = evt.target.getAttribute('data-tooltip')
+  tooltip.style.top = `${evt.pageY}px`
+  tooltip.style.left = `${evt.pageX}px`
+}
+
+const removeToolTip = evt => {
+  const tooltip = document.querySelector('.tooltip')
+  tooltip.classList.toggle('open')
+}
 
 function handleAddPodcastFormSubmit(event, podcasts) {
   event.preventDefault()

@@ -56,7 +56,6 @@ const podcasts = [
   ]
   
 
-
   module.exports = {
     getYoutubersData: (req, res) => {
       res.status(200).send(contentCreators)
